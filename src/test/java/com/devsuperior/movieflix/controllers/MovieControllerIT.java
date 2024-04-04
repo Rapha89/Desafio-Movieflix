@@ -195,4 +195,5 @@ public class MovieControllerIT {
 		result.andExpect(jsonPath("$.content[1].title").value("Kingsman"));
 		result.andExpect(jsonPath("$.content[2].title").value("Sonic"));
 	}
+
 }

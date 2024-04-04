@@ -17,6 +17,7 @@ public class GenreController {
 
     @Autowired
     private GenreService service;
+
     @PreAuthorize("hasAnyRole('ROLE_VISITOR', 'ROLE_MEMBER')")
     @GetMapping
     public ResponseEntity<List<GenreDTO>> findAll(){
