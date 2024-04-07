@@ -29,12 +29,12 @@ public class MovieService {
         return new MovieDetailsDTO(entity, entity.getGenre());
     }
 
-    public Page<MovieCardDTO> findAllMovies(Pageable pageable, String genreId) {
+    public Page<MovieCardDTO> findByGenre(Pageable pageable, String genreId) {
         if(genreId.equals("0")){
-            Page<MovieProjection> page = repository.findAllMovies(pageable, null);
+            Page<MovieProjection> page = repository.findByGenre(pageable, null);
             return page.map(x -> new MovieCardDTO(x));
         }
-        Page<MovieProjection> page = repository.findAllMovies(pageable, genreId);
+        Page<MovieProjection> page = repository.findByGenre(pageable, genreId);
         return page.map(x -> new MovieCardDTO(x));
     }
 

@@ -31,6 +31,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 			ORDER BY TITLE
 	        ) AS tb_result
 			""")
-	Page<MovieProjection> findAllMovies(Pageable pageable, String genreId);
+	Page<MovieProjection> findByGenre(Pageable pageable, String genreId);
 
 }
