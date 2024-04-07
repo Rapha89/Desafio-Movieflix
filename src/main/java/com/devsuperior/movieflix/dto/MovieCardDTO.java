@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.dto;
 
 import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.projections.MovieProjection;
 
 public class MovieCardDTO {
 
@@ -30,6 +31,14 @@ public class MovieCardDTO {
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         synopsis = entity.getSynopsis();
+    }
+
+    public MovieCardDTO(MovieProjection entity) {
+        id = entity.getId();
+        title = entity.getTitle();
+        subTitle = entity.getSubTitle();
+        year = entity.getMovieYear();
+        imgUrl = entity.getImgUrl();
     }
 
     public Long getId() {
@@ -71,4 +80,5 @@ public class MovieCardDTO {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
 }
