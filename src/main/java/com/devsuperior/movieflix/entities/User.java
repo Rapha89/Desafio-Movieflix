@@ -46,7 +46,6 @@ public class User implements UserDetails {
     private List<Review> reviews = new ArrayList<>();
 
     public User() {
-
     }
 
     public User(Long id, String name, String email, String password) {
@@ -54,6 +53,12 @@ public class User implements UserDetails {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public User(Long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
     }
 
     public Long getId() {
