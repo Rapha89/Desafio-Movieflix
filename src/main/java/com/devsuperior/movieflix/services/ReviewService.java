@@ -6,6 +6,7 @@ import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.entities.User;
+import com.devsuperior.movieflix.projections.ReviewProjection;
 import com.devsuperior.movieflix.repositories.MovieRepository;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.repositories.UserRepository;
@@ -14,7 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ReviewService {
@@ -36,6 +38,17 @@ public class ReviewService {
         Review entity = new Review();
         copyDtoToEntity(dto, entity);
         return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ReviewDTO> findReviews(Long id){
+        List<ReviewProjection> list = repository.searchReviewsByMovieId(id);
+        List<ReviewDTO> DtoList = new ArrayList<>();
+
+        for(ReviewProjection review : list){
+            DtoList.add(new ReviewDTO(review));
+        }
+        return DtoList;
     }
 
     private void copyDtoToEntity(ReviewDTO dto, Review entity){

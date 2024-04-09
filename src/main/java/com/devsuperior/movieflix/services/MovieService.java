@@ -38,4 +38,5 @@ public class MovieService {
         return page.map(x -> new MovieCardDTO(x));
     }
 
+
 }
